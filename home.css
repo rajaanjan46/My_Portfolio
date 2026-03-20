@@ -990,16 +990,27 @@ body.contact-bg{
 }
 
 
+#Project.section-group {
+  padding: clamp(2.4rem, 4vw, 4rem);
+}
+
+#Project.section-group h2 {
+  margin-bottom: clamp(1.6rem, 2vw, 2.4rem);
+  font-size: clamp(3rem, 4vw, 4rem);
+}
+
 .projects-container {
   display: grid;
-  gap: 20px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+  gap: clamp(1.6rem, 2vw, 2.4rem);
+  margin-top: 2.4rem;
+  align-items: stretch;
 }
 
 .project-card {
   background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(10px);
-  padding: 3rem 2rem;
+  padding: clamp(2rem, 3vw, 3rem);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1009,6 +1020,7 @@ body.contact-bg{
   position: relative;
   overflow: hidden;
   z-index: 1;
+  min-height: 100%;
 }
 
 .project-card::before {
@@ -1060,28 +1072,40 @@ body.contact-bg{
   margin-bottom: 1.5rem;
   color: #e2e8f0;
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: clamp(2rem, 2vw, 2.4rem);
+  line-height: 1.3;
 }
 
 .project-card p {
     color: #a0aec0;
-    font-size: 1.5rem;
-    line-height: 1.6;
+    font-size: clamp(1.4rem, 1.3vw, 1.6rem);
+    line-height: 1.7;
     margin-bottom: 2rem;
     flex-grow: 1;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: auto;
 }
 
 .project-links a {
   color: #00f2fe;
   text-decoration: none;
   border: 1px solid rgba(0, 242, 254, 0.5);
-  padding: 1rem 1.6rem;
+  padding: 1.1rem 1.6rem;
   border-radius: 8px;
   transition: 0.3s ease;
   display: inline-flex;
   gap: 8px;
   align-items: center;
+  justify-content: center;
   font-weight: 500;
+  font-size: 1.4rem;
+  min-height: 4.4rem;
+  width: fit-content;
 }
 
 .project-links a:hover {
@@ -1090,4 +1114,48 @@ body.contact-bg{
   border-color: transparent;
   box-shadow: 0 5px 15px rgba(0, 242, 254, 0.3);
   transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    border-radius: 14px;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .project-links a {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #Project.section-group {
+    padding: 2.2rem 1.4rem;
+  }
+
+  #Project.section-group h2 {
+    font-size: 2.8rem;
+  }
+
+  .project-card {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.9rem;
+  }
+
+  .project-card p {
+    font-size: 1.35rem;
+  }
+
+  .project-links a {
+    padding: 1rem 1.2rem;
+  }
 }
