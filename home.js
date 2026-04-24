@@ -30,22 +30,28 @@
   // Responsive Navbar Toggle
   const navToggle = document.getElementById("nav-toggle");
   const navbar = document.getElementById("navbar");
+  const navIcon = navToggle.querySelector("i");
 
   navToggle.addEventListener("click", () => {
     navbar.classList.toggle("active");
-    // Hide navbar if clicking outside
     if (navbar.classList.contains("active")) {
+      navIcon.classList.remove("fa-bars");
+      navIcon.classList.add("fa-xmark");
       document.body.style.overflow = "hidden";
     } else {
+      navIcon.classList.remove("fa-xmark");
+      navIcon.classList.add("fa-bars");
       document.body.style.overflow = "auto";
     }
   });
 
-  // Optional: Hide navbar when clicking a link (for mobile UX)
+  // Hide navbar when clicking a link (for mobile UX)
   navLinks.forEach(link => {
     link.addEventListener("click", () => {
       if (window.innerWidth <= 995) {
         navbar.classList.remove("active");
+        navIcon.classList.remove("fa-xmark");
+        navIcon.classList.add("fa-bars");
         document.body.style.overflow = "auto";
       }
     });
@@ -67,14 +73,6 @@
     // fallback: reveal immediately
     animatedEls.forEach(el => el.classList.add('in-view'));
   }
-
-const toggle = document.getElementById("nav-toggle");
-const nav = document.getElementById("navbar");
-
-toggle.addEventListener("click", () => {
-  nav.classList.toggle("active");
-});
-
 
 
   
